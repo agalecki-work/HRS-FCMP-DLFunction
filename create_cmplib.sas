@@ -1,12 +1,12 @@
-options mprint nocenter;
+/*---  autoexec.sas ---*/
 
-%let fcmp_path = [LOCATION]\FCMP;        /* <=== USER MUST modify */
-%include "&fcmp_path\_global_mvars.inc"; /* Global macro vars defined */
+%put fcmp_path = &fcmp_path;
+
 %include _macros(create_fcmp_lib filenamesInFolder);  
 
 /* process FCMP cmplib (source in src folder)*/
 
-libname lib "&_cmplib_path\DLFunction";
-%create_fcmp(lib,DLFunction);
+libname lib "&_cmplib_path";
+%create_fcmp(lib,  DLFunction);
 
-endsas;
+
