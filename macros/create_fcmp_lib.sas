@@ -2,9 +2,6 @@
 %* cmplib_name.  Ex. DLfunction;
 %* fcmp_path  (global) Ex. .;
 %let sas_prog = create_cmplib;
-filename printlog "&_cmplib_info_path/&member/&sas_prog.-&member..log";
-proc printto log = printlog new;
-run;
 
 %put FCMP member: `%upcase(&member)` is created  ... OK;
 %put Macro `create_fcmp_lib` is invoked by &sas_prog..sas script ... OK;
@@ -12,7 +9,8 @@ run;
 
 /*--- Create dataset `filenames`with the list of source files */ 
 
-%let fcmp_src_path = &_fcmp_source_path/&member;       /* Ex.  ./src/DLFunction */
+%let fcmp_src_path = &_fcmp_source_path;       /* Ex.  ./fcmp_src */
+%put fcmp_src_path = &fcmp_src_path;
 %filenamesInFolder(&fcmp_src_path);  /* Dataset `_filenames` created */
 %let fcmp_files =;      /* Ex. _binder _auxiliary ... */
 data _filenames;
@@ -64,12 +62,12 @@ by fcmp_grp;
 run;
 ods listing close;
 
-libname _tmp "&_cmplib_info_path/&member";
+libname _tmp "&_cmplib_info_path";
 data _tmp.&member;
  set dt;
 run;
 
-%let html_path = &_cmplib_info_path/&member/&member..html;
+%let html_path = &_cmplib_info_path/&member..html;
 ods html file = "&html_path";
 
 Title "List of funs/subs in &member library member";
@@ -77,7 +75,5 @@ proc print data=dt;
 by fcmp_grp;
 run;
 ods html close;
-proc printto;
-run;
 
 %mend create_fcmp;

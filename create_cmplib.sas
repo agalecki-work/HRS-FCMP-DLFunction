@@ -1,5 +1,6 @@
 /*---  autoexec.sas ---*/
 
+options mprint nocenter;
 %put fcmp_path = &fcmp_path;
 
 %include _macros(create_fcmp_lib filenamesInFolder);  
