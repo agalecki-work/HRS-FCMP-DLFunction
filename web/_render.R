@@ -1,7 +1,7 @@
 # source("_render.R")
 
 # https://github.com/rstudio/rmarkdown-website-examples
-unlink("_sie",recursive=TRUE)
+unlink("_site",recursive=TRUE)
 
 rm(list= ls())
 T1 <- ""
