@@ -21,11 +21,10 @@ This section contains ADL/IADL FCMP functions/subroutines organized in various g
 ```
 
 
-
 ```{r, echo =FALSE}
 # Tracing execution
-Tr_ADLx <-  "ADL-main-"
-Tr_ADL <-  paste0(Tr_ADLx,1)
+Tinit <-  "ADL-main-"
+Tr <-  paste0(Tinit,1)
 ```
 
 <!--- ================= FCMP GROUP STARTS HERE =========================== --->
@@ -44,7 +43,7 @@ This section includes information on FCMP functions/subroutines from "aux" group
 
 ```{r, echo =FALSE}
 # Tracing execution
-Tr_ADL <-  paste0(Tr_ADLx, 500)
+T1 <-  paste0(Tinit, 500)
 ```
 
 
@@ -63,6 +62,6 @@ This section includes information on FCMP functions/subroutines from "binder" gr
 
 ```{r, echo =FALSE}
 # Tracing execution
-Tr_ADL <-  paste0(Tr_ADLx,1)
+T1 <-  paste0(Tinit,1)
 ```
 
