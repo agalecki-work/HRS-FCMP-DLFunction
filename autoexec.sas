@@ -1,6 +1,6 @@
 
 
-%let fcmp_path = . ;        /*  Current directory */
+%let fcmp_path = . ;         /*  Path to HRS-FCMP-DLFunction directory */
 
 /* Create global macro vars */
 
