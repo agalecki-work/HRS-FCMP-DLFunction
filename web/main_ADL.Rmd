@@ -1,0 +1,68 @@
+---
+title: "ADL/IADL FCMP functions/subroutines"
+output:
+  rmdformats::readthedown:
+     lightbox: true
+     use_bookdown: true
+---
+
+
+# ***ADL/IADL domain***  
+
+This section contains ADL/IADL FCMP functions/subroutines organized in various groups.
+
+
+
+```{r sas-ininit, echo= FALSE}
+ library(rmdformats)
+
+ # https://www.r-bloggers.com/2019/09/create-rmarkdown-document-with-sas-code-and-output-sas-engine/
+ saspath <- "C:/Program Files/SASHome/SASFoundation/9.4/sas.exe"
+```
+
+
+
+```{r, echo =FALSE}
+# Tracing execution
+Tr_ADLx <-  "ADL-main-"
+Tr_ADL <-  paste0(Tr_ADLx,1)
+```
+
+<!--- ================= FCMP GROUP STARTS HERE =========================== --->
+<!--- =====               aux group starts                            ==== --->
+
+#  "aux" FCMP group {#aux-anchor}
+ 
+
+This section includes information on FCMP functions/subroutines from "aux" group
+
+
+## `FQ_fun` function 
+
+```{r child-ADL-aux, child = 'sections/ADL-aux-FQ_fun.Rmd'}
+```
+
+```{r, echo =FALSE}
+# Tracing execution
+Tr_ADL <-  paste0(Tr_ADLx, 500)
+```
+
+
+<!--- ================= FCMP GROUP STARTS HERE =========================== --->
+<!--- ===== binder FCMP group ==== --->
+
+#  "binder" FCMP group {#binder-anchor}
+
+This section includes information on FCMP functions/subroutines from "binder" group.
+
+## `dispatch_datain` function 
+
+```{r child-ADL-aux, child = 'sections/ADL-binder-dispatch_datain.Rmd'}
+```
+
+
+```{r, echo =FALSE}
+# Tracing execution
+Tr_ADL <-  paste0(Tr_ADLx,1)
+```
+

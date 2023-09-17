@@ -1,0 +1,69 @@
+---
+title: "`FQ_fun` function in ADL/IADL aux group "
+output:
+  rmdformats::readthedown:
+     lightbox: true
+     use_bookdown: true
+---
+
+```{r, echo =FALSE}
+# Tracing execution
+Tinit <-  "ADL-aux-FQ_fun-"
+Tr <- paste0(Tinit, 1)
+```
+
+
+## `FQ_fun` function
+
+`FQ_fun` is an auxiliary function in "aux" FCMP group.
+
+ _Purpose:_ Recoding variable  
+
+ _Arguments:_  
+
+* `studyr`: Redundant argument 
+* `var_old`: Variable to be recoded
+
+_Syntax:_ 
+
+``` 
+  new_var = FQ_fun(1992, var_old);
+```
+
+
+
+ _Example:_ 
+ 
+
+```{r sas ADL-aux-FQ_fun, eval = FALSE}
+/* ADL-aux-FQ_fun */
+data dtin;
+  input varin @@;
+cards;
+1 5 97 -8 8 98 9 99
+;
+run;
+
+data out; 
+    set dtin(keep = varin); 
+    vnew =  FQ_fun(1992, varin);
+run;
+
+proc print data=out;
+run;
+``` 
+
+```{r, echo = FALSE}
+ # Tracing execution
+ T1 <-  paste0(Tinit, 3)
+```
+
+Output: ADL (aux) `FQ_fun` function
+
+```{sas, ref.label = "ADL-aux-FQ_fun", echo= FALSE, eval = TRUE, engine.path = saspath}
+```
+
+```{r, echo =FALSE}
+# Tracing execution
+Tr <- paste0(Tinit, 99)
+```

@@ -1,0 +1,20 @@
+name: "HRS-FCMP"
+navbar:
+  title: "My Website"
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "ADL/IADL"                    # ADL/IADL Domain
+      icon: fa-info
+      href: main_ADL.html
+    - text: "Why vars"                    # Why vars 
+      icon: fa-info
+      href: main_why_grp.html           
+    - text: "Template name"               # Ex: "ADL/IADL",     "Health"
+      icon: fa-info
+      href: main_template.html            # Ex: main_ADL.html,  main_template.html
+  
+  
+  
+  

@@ -1,0 +1,71 @@
+---
+title: "`why_vin` function"
+subtitle: "ADL-why_grp group"
+---
+
+
+```{r, echo=FALSE}
+#--- Trace
+Tinit <- "ADL-why_grp-why-vin-"  # Matches file name
+Tr  <- paste0(Tinit, 1)
+```
+
+
+<!--- ===== (ADL) why-grp FCMP group ==== --->
+
+
+<!--- (ADL) why-grp::why_vin function --->
+
+## `why_vin` function
+
+_Purpose:_ Returns the list of input variables from `why` for a given year  
+
+ _Arguments:_  
+
+* `studyyr`: Study year 
+_Syntax:_ 
+
+``` 
+  vin_list = why_vin(1992);
+```
+
+
+_Example:_
+
+```{r, echo=FALSE}
+#--- Trace
+Tr  <- paste0(Tinit, 51)
+```
+
+
+```{r ADL-binder-why_vin, eval= FALSE}
+/* ADL-why:  grp-why-vin  */
+data yearx;
+   year = 1992; output;
+   year = 1995; output;
+   year = 2002; output;
+   year = 2010; output;
+run;
+ 
+data vin_names;
+   set yearx;
+   vinx = why_vin(year);
+run;
+;
+proc print data = vin_names;
+run;
+``` 
+
+Output:  "why_vin function executed";
+
+
+```{sas,  ADL-binder-why_vin, echo= FALSE, engine.path=saspath}
+```
+
+```{r, echo=FALSE}
+#--- Trace
+Tr  <- paste0(Tinit, 99)
+```
+
+
+

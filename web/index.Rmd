@@ -1,0 +1,11 @@
+---
+title: "My Website"
+---
+
+
+# Links to variable domains
+
+* [ADL/IADL](./main_ADL.html) variable groups
+   - [Binder](./main_ADl.html#binder-anchor) group
+   
+

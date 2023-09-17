@@ -1,0 +1,46 @@
+---
+title:  "FCMP why_grp functions/subroutines"
+output:
+  rmdformats::readthedown:
+     lightbox: true
+     use_bookdown: true
+---
+
+# ***:why_grp:*** domain  
+
+This section contains Health FCMP functions/subroutines organized in various groups.
+
+```{r sas-ininit, echo =FALSE}
+ library(rmdformats)
+ Tinit <- "main-why_grp-"
+ # https://www.r-bloggers.com/2019/09/create-rmarkdown-document-with-sas-code-and-output-sas-engine/
+ saspath <- "C:/Program Files/SASHome/SASFoundation/9.4/sas.exe"
+```
+
+```{r, echo = FALSE}
+ # Tracing execution
+ Tr <-  paste0(Tinit,1)
+```
+
+
+<!--- ===== <why_grp>: FCMP group ==== --->
+
+#  "why" vars group
+
+This section includes information on FCMP functions/subroutines from "why" group.
+
+
+```{r child-aux, child= 'sections/ADL-why_grp-why_vin..Rmd'}
+```
+
+```{r, echo = FALSE}
+ # Tracing execution
+ Tr <-  paste0(Tinit,3)
+```
+
+
+```{r, echo = FALSE}
+ # Tracing execution
+ Tr <-  paste0(Tinit,4)
+```
+

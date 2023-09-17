@@ -1,0 +1,54 @@
+---
+title:  "FCMP template functions/subroutines"
+output:
+  rmdformats::readthedown:
+     lightbox: true
+     use_bookdown: true
+---
+
+# ***:Template:*** domain  
+
+This section contains Health FCMP functions/subroutines organized in various groups.
+
+```{r sas-ininit, echo =FALSE}
+ library(rmdformats)
+ Tinit <- "main-template-"
+ # https://www.r-bloggers.com/2019/09/create-rmarkdown-document-with-sas-code-and-output-sas-engine/
+ saspath <- "C:/Program Files/SASHome/SASFoundation/9.4/sas.exe"
+```
+
+```{r, echo = FALSE}
+ # Tracing execution
+ Tr <-  paste0(Tinit,1)
+```
+
+
+<!--- ===== <template>: aux FCMP group ==== --->
+
+#  "aux" group
+
+This section includes information on FCMP functions/subroutines from "aux" group.
+
+
+```{r child-aux, child= 'sections/template-aux-FQ_fun.Rmd'}
+```
+
+```{r, echo = FALSE}
+ # Tracing execution
+ Tr <-  paste0(Tinit,3)
+```
+
+<!--- ===== binder FCMP group ==== --->
+
+#  "binder" group
+
+This section includes information on FCMP functions/subroutines from "binder" group.
+
+```{r , child= 'sections/template-binder-bind_vgrps.Rmd'}
+```
+
+```{r, echo = FALSE}
+ # Tracing execution
+ Tr <-  paste0(Tinit,4)
+```
+

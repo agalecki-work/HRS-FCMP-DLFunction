@@ -1,0 +1,53 @@
+---
+title: "`bind_vgrps` function in Template-binder group"
+---
+
+```{r , echo=FALSE}
+# Tr stores trace
+Trx <- "Template-binder-bind_vgrps"
+Tr <- paste0(Tinit,"1")
+```
+
+<!--- ===== (Health) binder FCMP group ==== --->
+
+
+<!--- (Health) binder::bind_vgrps function --->
+
+## `bind_vgrps` function
+
+_Purpose:_ Returns list of variable groups  
+
+ _Arguments:_  
+
+* `select_vgrps $`: List of selected variable groups 
+
+_Syntax:_ 
+
+``` 
+  vgrp_list = bind_vgrps("?");  
+```
+
+_Example:_
+
+```{r tmplt-bind_vgrps, eval =FALSE}
+/* Template-binder-bind_vgrps */
+ data vgrps;
+   length res $ 500;
+   res = bind_vgrps("?"); output;
+   res = bind_vgrps("subhh$ skip"); output;
+run;
+;
+proc print data = vgrps;
+run;
+``` 
+
+OUTPUT:  `bind_vgrps` function executed;
+
+```{sas , echo=FALSE,echo =FALSE, ref.label = "tmplt-bind_vgrps", engine.path = saspath }
+```
+```{r echo =FALSE}
+# T1 stores trace
+Tr <- paste0(Trx,"9")
+```
+
+

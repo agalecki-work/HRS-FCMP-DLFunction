@@ -1,0 +1,64 @@
+---
+title: "FQ_fun function"
+subtitle: "template-aux group"
+---
+
+## `FQ_fun` function
+
+```{r, echo=FALSE}
+#--- Trace
+Trx <- "template-aux-FQ_fun"  # Matches file name
+Tr  <- paste0(Trx, 1)
+```
+
+`FQ_fun` is an auxiliary function in "aux" FCMP group.
+
+ _Purpose:_ Recoding variable `var_old`  
+
+ _Arguments:_  
+
+* `studyr`: Redundant argument 
+* `var_old`: Variable to be recoded
+
+_Syntax:_ 
+
+``` 
+  new_var = FQ_fun(1992, var_old);
+```
+
+```{r, echo =FALSE}
+# Tracing execution
+T1 <-  "ADL-main--aux-FQ_fun1"
+```
+
+
+ _Example:_ 
+ 
+
+```{sas ADL-aux-FQ_fun, eval = FALSE, engine.path = saspath}
+/* --- template-aux-FQ_fun --- */
+data dtin;
+  input varin @@;
+cards;
+1 5 97 -8 8 98 9 99
+;
+run;
+
+data out; 
+    set dtin(keep = varin); 
+    vnew =  FQ_fun(1992, varin);
+run;
+
+proc print data=out;
+run;
+``` 
+
+_Output:_ `FQ_fun` function
+
+```{sas, ref.label = "ADL-aux-FQ_fun", echo= FALSE, eval = TRUE, engine.path = saspath}
+```
+
+
+```{r, echo=FALSE}
+Tr  <- paste0(Trx, 99)
+```
