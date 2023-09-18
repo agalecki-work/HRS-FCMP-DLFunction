@@ -71,14 +71,14 @@ function FQ_fun(studyyr, var_old) group ="aux";
 
 ** _Example_;
 
-*START* {r FQ_fun-example, eval =FALSE};
-/* Insert SAS Example here */
+/*RMD* {r FQ_fun-example, eval=FALSE};
+* Remember do not close comment '/*' inside this block;
 data dt;
  x=33;
 run;
-proc print data;
+proc print data=dt;
 run;
-*END*;
+*RMD*/;
 
 
 /*RMD* Label 25
