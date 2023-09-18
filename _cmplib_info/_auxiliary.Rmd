@@ -1,4 +1,3 @@
-/*+RMD Note: General info on _auxiliary.sas STARTS
 ---
 title: "FCMP functions/subroutines in 'aux' group"
 output:
@@ -15,14 +14,11 @@ library(rmdformats)
 saspath <- "C:/Program Files/SASHome/SASFoundation/9.4/sas.exe"
 ```
  
- 
 #  "{r vgrp_nm}" FCMP group {#aux-anchor};
  
 This section includes information on FCMP functions/subroutines from "aux" group
--*/  * General info on _auxiliary.sas ENDS here;
- 
- 
-/*+RMD NOTE: ---> FQ_fun description starts here
+xyz
+xyz
  
 ```{r , echo=FALSE}
 fun_nm <- "FQ_fun"
@@ -46,66 +42,67 @@ _Syntax:_
 new_var = FQ_fun(1992, var_old);
 ```
  
--*/  * Note: General info on _auxiliary.sas ENDS */
- 
-/* FQ_fun source starts here (note lines starting with <*+RMD > and <*- >comment */
- 
-*+ {r FQ_fun-src, eval = FALSE};
-function FQ_fun(studyyr, var_old) group ="aux";
- 
-/* Auxiliary function */
-var_new = var_old;
- 
-select (var_old);
-when (1) var_new = 1;
-when (5) var_new = 0;
-when (97) var_new =.O;
-when (.,-8) var_new =.M;
-when (8,98) var_new =.D;
-when (9,99) var_new =.R;
-otherwise;
-end;
-return(var_new);
-endsub; /* end function FQ_fun */
-```
- 
-/* FQ_fun example starts here */
- 
-_Example_;
- 
-*+ {r FQ_fun-example, eval =FALSE};
-/* Insert SAS Example here */
-;
- 
+xyz
+xyz/* FQ_fun source starts here */
+xyz
+xyzfunction FQ_fun(studyyr, var_old) group ="aux";
+xyz
+xyz/* Auxiliary function */
+xyzvar_new = var_old;
+xyz
+xyzselect (var_old);
+xyzwhen (1) var_new = 1;
+xyzwhen (5) var_new = 0;
+xyzwhen (97) var_new =.O;
+xyzwhen (.,-8) var_new =.M;
+xyzwhen (8,98) var_new =.D;
+xyzwhen (9,99) var_new =.R;
+xyzotherwise;
+xyzend;
+xyzreturn(var_new);
+xyzendsub; /* end function FQ_fun */
+xyz*END*;
+xyz
+xyz
+xyz
+xyz/* Insert SAS Example here */
+xyzdata dt;
+xyzx=33;
+xyzrun;
+xyzproc print data;
+xyzrun;
+xyz*END*;
+xyz
+xyz
 Output: `FQ_fun` function (aux group);
-*+ {sas, ref.label = "FQ_fun-example", echo= FALSE, eval = TRUE, engine.path = saspath};
-;
  
-/*+RMD NOTE: ---> `studyyr_ok` function description starts here
+```{sas, ref.label = "FQ_fun-example", echo= FALSE, eval = TRUE, engine.path = saspath};
+```;
+xyz
+xyz
  
 ```{r , echo=FALSE}
-fun_nm <- "FQ_fun"
+fun_nm <- "studyyr_ok"
 ```
  
  
-* NOTE: ---> `studyyr_ok` function description ends here;
- 
- 
-ction studyyr_ok(yr) group ="aux";
-= 1;
-ect;
-n(yr = .)    ok =0;
-n(yr < 1992) ok =0;
-n(yr > 1996 and mod(yr,2)=1) ok =0;
-n(yr > 2030) ok = 0;
-erwise;
-;
-urn(ok); /* function studyyr_ok */
-sub;
- 
-ction data_exist(ref $) group = "aux";
-= exist(ref);
-(ref = "") then rc=0;
-urn(rc);
-sub;
- 
+xyz
+xyz
+xyzfunction studyyr_ok(yr) group ="aux";
+xyzok  = 1;
+xyzselect;
+xyzwhen(yr = .)    ok =0;
+xyzwhen(yr < 1992) ok =0;
+xyzwhen(yr > 1996 and mod(yr,2)=1) ok =0;
+xyzwhen(yr > 2030) ok = 0;
+xyzotherwise;
+xyzend;
+xyzreturn(ok); /* function studyyr_ok */
+xyzendsub;
+xyz
+xyzfunction data_exist(ref $) group = "aux";
+xyzrc = exist(ref);
+xyzif (ref = "") then rc=0;
+xyzreturn(rc);
+xyzendsub;
+xyz

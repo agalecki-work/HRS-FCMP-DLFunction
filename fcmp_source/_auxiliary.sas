@@ -1,4 +1,4 @@
-/*+RMD Note: General info on _auxiliary.sas STARTS
+/*RMD*   Label: 1
 ---
 title: "FCMP functions/subroutines in 'aux' group"
 output:
@@ -15,14 +15,13 @@ output:
  saspath <- "C:/Program Files/SASHome/SASFoundation/9.4/sas.exe"
 ```
 
-
 #  "{r vgrp_nm}" FCMP group {#aux-anchor};
 
 This section includes information on FCMP functions/subroutines from "aux" group
--*/  * General info on _auxiliary.sas ENDS here;
+*RMD*/  * RMD Label 1 ENDS;
 
 
-/*+RMD NOTE: ---> FQ_fun description starts here
+/*RMD*  Label 10
 
 ```{r , echo=FALSE}
 fun_nm <- "FQ_fun"
@@ -46,11 +45,11 @@ _Syntax:_
   new_var = FQ_fun(1992, var_old);
 ```
 
--*/  * Note: General info on _auxiliary.sas ENDS */
+*RMD*/  * RMD label 10 ENDS;
 
-/* FQ_fun source starts here (note lines starting with <*+RMD > and <*- >comment */
+/* FQ_fun source starts here */
 
-*+ {r FQ_fun-src, eval = FALSE}; 
+*START* {r FQ_fun-src, eval = FALSE}; 
 function FQ_fun(studyyr, var_old) group ="aux"; 
 
 /* Auxiliary function */
@@ -67,28 +66,37 @@ function FQ_fun(studyyr, var_old) group ="aux";
   end;
   return(var_new);
  endsub; /* end function FQ_fun */
-*-;  * end of FQ_fun-src code block;
+*END*;
 
-/* FQ_fun example starts here */
 
 ** _Example_;
 
-*+ {r FQ_fun-example, eval =FALSE};
+*START* {r FQ_fun-example, eval =FALSE};
 /* Insert SAS Example here */
-*- ;
+data dt;
+ x=33;
+run;
+proc print data;
+run;
+*END*;
 
-** Output: `FQ_fun` function (aux group);
-*+ {sas, ref.label = "FQ_fun-example", echo= FALSE, eval = TRUE, engine.path = saspath};
-*- ;
 
-/*+RMD NOTE: ---> `studyyr_ok` function description starts here
+/*RMD* Label 25
+Output: `FQ_fun` function (aux group);
+
+```{sas, ref.label = "FQ_fun-example", echo= FALSE, eval = TRUE, engine.path = saspath};
+```;
+*RMD*/  * Label 25 ENDS;
+
+
+/*RMD*  Label 30 `studyyr_ok` function description starts here
 
 ```{r , echo=FALSE}
-fun_nm <- "FQ_fun"
+fun_nm <- "studyyr_ok"
 ```
 
 
--*/ * NOTE: ---> `studyyr_ok` function description ends here;
+*RMD*/ * NOTE: ---> `studyyr_ok` function description ends here;
 
  
  function studyyr_ok(yr) group ="aux";
