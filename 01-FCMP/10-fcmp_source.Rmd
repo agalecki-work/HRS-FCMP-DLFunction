@@ -19,7 +19,7 @@ Link to FCMP source: [FCMP_SOURCE](./fcmp_source/) folder
 
 * PROC CONTENTS output
 
-```{r fcmp-contents, file ="./RMD/10-dlfunction_contents.sas", eval= FALSE, echo=FALSE}
+```{r fcmp-contents, file ="./sasex/fcmp-contents.sas", eval= FALSE, echo=FALSE}
 ```
 
 ```{sas , ref.label = "fcmp-contents", echo=FALSE, engine.path = saspath}
@@ -28,17 +28,17 @@ Link to FCMP source: [FCMP_SOURCE](./fcmp_source/) folder
 * List of FCMP functions/subroutines groups
 
 
-```{r fcmp-grp-list, file ="./RMD/11-dlfunction_grp-list.sas", eval= FALSE, echo=FALSE}
+```{r fcmp-grp-list, file ="./sasex/fcmp-grp_list.sas", eval= FALSE, echo=FALSE}
 ```
 
-```{sas , ref.label = "fcmp-grp-list", echo=FALSE, engine.path = saspath}
+```{sas , ref.label = "fcmp-grp_list", echo=FALSE, engine.path = saspath}
 ```
 
 
 * List of FCMP functions/subroutines
 
 
-```{r fcmp-fun-list, file ="./RMD/12-dlfunction_fun-list.sas", eval= FALSE, echo=FALSE}
+```{r fcmp-fun-list, file ="./RMD/fcmp-fun_list.sas", eval= FALSE, echo=FALSE}
 ```
 
 ```{sas , ref.label = "fcmp-fun-list", echo=FALSE, engine.path = saspath}
