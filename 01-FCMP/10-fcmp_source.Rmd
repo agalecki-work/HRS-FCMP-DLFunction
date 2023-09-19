@@ -1,0 +1,52 @@
+---
+title: "FCMP cmlib"
+---
+
+```{r sas-ininit, echo =FALSE}
+ library(rmdformats)
+ Tinit <- "main-why_grp-"
+ # https://www.r-bloggers.com/2019/09/create-rmarkdown-document-with-sas-code-and-output-sas-engine/
+ saspath <- "C:/Program Files/SASHome/SASFoundation/9.4/sas.exe"
+ cdir <- getwd()
+```
+
+Current directory: `r cdir`
+
+Link to FCMP source: [FCMP_SOURCE](./fcmp_source/) folder
+
+
+# List of FCMP functions/subroutines
+
+* PROC CONTENTS output
+
+```{r fcmp-contents, file ="./RMD/10-dlfunction_contents.sas", eval= FALSE, echo=FALSE}
+```
+
+```{sas , ref.label = "fcmp-contents", echo=FALSE, engine.path = saspath}
+```
+
+* List of FCMP functions/subroutines groups
+
+
+```{r fcmp-grp-list, file ="./RMD/11-dlfunction_grp-list.sas", eval= FALSE, echo=FALSE}
+```
+
+```{sas , ref.label = "fcmp-grp-list", echo=FALSE, engine.path = saspath}
+```
+
+
+* List of FCMP functions/subroutines
+
+
+```{r fcmp-fun-list, file ="./RMD/12-dlfunction_fun-list.sas", eval= FALSE, echo=FALSE}
+```
+
+```{sas , ref.label = "fcmp-fun-list", echo=FALSE, engine.path = saspath}
+```
+
+```{r ex1-sas, file = "./RMD/ex1.sas", eval=FALSE, echo=FALSE}
+```
+
+```{sas , ref.label = "ex1-sas", engine.path = saspath}
+```
+

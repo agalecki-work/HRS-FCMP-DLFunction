@@ -1,6 +1,6 @@
+options nocenter;
 
-
-%let fcmp_path = . ;         /*  Path to HRS-FCMP-DLFunction directory */
+%let fcmp_path = . ;         /*  Path to `HRS-FCMP-DLFunction` directory */
 
 /* Create global macro vars */
 
