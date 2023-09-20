@@ -1,6 +1,6 @@
 
 libname clib "&_cmplib_info_path";
-
+Title "PROC CONTENTS";
 ods exclude all;
 proc contents data = clib.dlfunction;
   ods output variables=fcmp_info;

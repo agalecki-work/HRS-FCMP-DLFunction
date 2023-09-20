@@ -1,7 +1,7 @@
 
 libname clib "&_cmplib_info_path";
 
-Title "List of function/subroutine groups";
+Title "List of FCMP groups";
 
 proc sort data = clib.dlfunction
            out = vgrps nodupkey;

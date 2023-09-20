@@ -12,12 +12,15 @@ title: "FCMP cmlib"
 
 Current directory: `r cdir`
 
-Link to FCMP source: [FCMP_SOURCE](./fcmp_source/) folder
+# LINKS 
 
+* FCMP source: [FCMP_SOURCE](./fcmp_source/)
+* FCMP info:   [_CMPLIB_INFO](./_cmplib_info/)
+* SAS examples: [SASEX](./sasex/) 
 
 # List of FCMP functions/subroutines
 
-* PROC CONTENTS output
+* Variables with the info on FCMp library
 
 ```{r fcmp-contents, file ="./sasex/fcmp-contents.sas", eval= FALSE, echo=FALSE}
 ```
@@ -31,20 +34,22 @@ Link to FCMP source: [FCMP_SOURCE](./fcmp_source/) folder
 ```{r fcmp-grp-list, file ="./sasex/fcmp-grp_list.sas", eval= FALSE, echo=FALSE}
 ```
 
-```{sas , ref.label = "fcmp-grp_list", echo=FALSE, engine.path = saspath}
+```{sas , ref.label = "fcmp-grp-list", echo=FALSE, engine.path = saspath}
 ```
 
 
-* List of FCMP functions/subroutines
+* List of FCMP functions/subroutines (organized by FCMP groups)
 
 
-```{r fcmp-fun-list, file ="./RMD/fcmp-fun_list.sas", eval= FALSE, echo=FALSE}
+```{r fcmp-fun-list, file ="./sasex/fcmp-fun_list.sas", eval= FALSE, echo=FALSE}
 ```
 
 ```{sas , ref.label = "fcmp-fun-list", echo=FALSE, engine.path = saspath}
 ```
 
-```{r ex1-sas, file = "./RMD/ex1.sas", eval=FALSE, echo=FALSE}
+* Example template
+
+```{r ex1-sas, file = "./sasex/example-template.sas", eval=FALSE, echo=FALSE}
 ```
 
 ```{sas , ref.label = "ex1-sas", engine.path = saspath}

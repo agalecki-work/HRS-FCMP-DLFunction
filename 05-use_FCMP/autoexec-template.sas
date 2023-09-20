@@ -1,4 +1,4 @@
-options mprint;
+options mprint nocenter;
 
 
 
@@ -25,6 +25,13 @@ libname hrs_data (hrs2020c
 
 
 
-%let _dataout_path = [PATH to OUTPUTFOLDER]; /* Path to folder for output data */
+%let data_out_path = [PATH to OUTPUTFOLDER]; /* Path to folder for output data */
+
+
+/*--- Typically no changes needed below this line, if SAS executed in a batch mode ----*/
+
+%let  _cdir = .;                /* Current directory */
+
+%let fcmp_path = ../01-FCMP;    /* Path to 01-FCMP directory (one level up) */
 
 

@@ -1,4 +1,4 @@
-/* ADL-aux-FQ_fun */
+Title "FQ_fun function example";
 data dtin;
   input varin @@;
 cards;
