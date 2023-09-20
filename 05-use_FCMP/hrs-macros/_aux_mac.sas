@@ -1,4 +1,8 @@
 %macro expand_years(hrsyears);
+/* hrsyears examples:
+ 1992 -2020
+ 1992 1994 2000-2010  (Note: no spaces before and after dash)
+*/
 
 data _hrsyears;
  length years $ 100;

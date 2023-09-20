@@ -26,7 +26,38 @@ filename _tstmac "&prj_path\hrs-macros"; /* folder with macros */
 %include _tstmac(summ_fcmplib binder_info); /* Macros loaded */
 
 %let fcmp_member = DLFunction;
-ods html file = "&out_path/_output-data-contents.html";
+
+/* STEP 1: cmplib:  FCMP library information */
+/* `_ucmplib` SAS libref to FCMP library */
+ods html file = "&out_path/S1-cmplib-info.html";
+%hrs_binder(cmplib= _ucmplib);
+ods html close;
+
+
+/* STEP 2: member: FCMP member information */
+ods html file = "&out_path/S2-FCMP-member-info.html";
+%hrs_binder(cmplib= _ucmplib, member = &fcmp_member);
+ods html close;
+
+
+/* STEP 3: hrs_years: HRS years information */
+
+ods html file = "&out_path/S3-HRS_years-info.html";
+%hrs_binder(cmplib= _ucmplib, member = &fcmp_member,
+            hrs_years = 1992-2020);
+ods html close;
+
+/* STEP 4: vgrps: Selected harmonized var groups info  */
+
+ods html file = "&out_path/S4-vgrps-info.html";
+%hrs_binder(cmplib= _ucmplib, member = &fcmp_member,
+            hrs_years = 1992-2020, vgrps = nagi);
+ods html close;
+
+/* STEP 5 dataout: Dataout in `hrs_core` SAS library */
+/* Note: `vgrps=?` selects all harmonized var groups */
+
+ods html file = "&out_path/S5-dataout-info.html";
 %hrs_binder (cmplib= _ucmplib, member = &fcmp_member, 
-             hrs_years = 1992-2020, hrs_libin = hrs_data, dataout=dtout.hrs_out);
+             hrs_years = 1992-2020, vgrps = ?, dataout=dtout.hrs_out);
 ods html close;

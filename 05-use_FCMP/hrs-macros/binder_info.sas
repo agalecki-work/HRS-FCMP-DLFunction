@@ -108,8 +108,8 @@ title "";
 %if &ex3 = Y %then %hrs_project_info(fcmplib =&cmplib, fcmpmember=&member,
                                        hrsyears =&hrs_years,vgrps=&vgrps, printit = Y); 
 %if &ex4 = Y %then %hrs_project_info(fcmplib =&cmplib, fcmpmember=&member, hrsyears =&hrs_years,
-                        vgrps=&vgrps, hrs_datalib =&hrs_libin, printit = Y);
+                        vgrps=&vgrps, hrs_datalib =hrs_core, printit = Y);  /* sep. 2023 &hrs_libin -> hrs_core */
 %if &ex5 = Y %then %hrs_main_macro(fcmplib =&cmplib, fcmpmember=&member, hrsyears =&hrs_years,
-                        vgrps=&vgrps, hrs_datalib =&hrs_libin, out =&dataout);
+                        vgrps=&vgrps, hrs_datalib =hrs_core, out =&dataout); /* sep. 2023 &hrs_libin -> hrs_core */
 
 %mend hrs_binder;
