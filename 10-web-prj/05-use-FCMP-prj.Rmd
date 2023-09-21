@@ -1,5 +1,9 @@
 ---
-title: "FCMP cmlib"
+title: "Use FCMP"
+output:
+  rmdformats::readthedown:
+     lightbox: true
+     use_bookdown: true
 ---
 
 ```{r sas-ininit, echo =FALSE}
@@ -12,17 +16,19 @@ title: "FCMP cmlib"
 
 Current directory: `r cdir`
 
-# LINKS 
+# LINKS
 
-* FCMP source: [FCMP_SOURCE](./fcmp_source/)
-* FCMP info:   [_CMPLIB_INFO](./_cmplib_info/)
-* SAS examples: [SASEX](./sasex/) 
+Links to Step files
+
+* [Step1](../05-use-FCMP-prj/info-prj5/)
+* FCMP info:   [_CMPLIB_INFO](../01-create-FCMP-prj/_cmplib_info/)
+* SAS snippets: [SASEX](./sasx/) 
 
 # List of FCMP functions/subroutines
 
 * Variables with the info on FCMp library
 
-```{r fcmp-contents, file ="./sasex/fcmp-contents.sas", eval= FALSE, echo=FALSE}
+```{r fcmp-contents, file ="./sasx/01_FCMP-contents.sas", eval= FALSE, echo=FALSE}
 ```
 
 ```{sas , ref.label = "fcmp-contents", echo=FALSE, engine.path = saspath}
@@ -31,7 +37,7 @@ Current directory: `r cdir`
 * List of FCMP functions/subroutines groups
 
 
-```{r fcmp-grp-list, file ="./sasex/fcmp-grp_list.sas", eval= FALSE, echo=FALSE}
+```{r fcmp-grp-list, file ="./sasx/01_FCMP-grp_list.sas", eval= FALSE, echo=FALSE}
 ```
 
 ```{sas , ref.label = "fcmp-grp-list", echo=FALSE, engine.path = saspath}
@@ -41,17 +47,9 @@ Current directory: `r cdir`
 * List of FCMP functions/subroutines (organized by FCMP groups)
 
 
-```{r fcmp-fun-list, file ="./sasex/fcmp-fun_list.sas", eval= FALSE, echo=FALSE}
+```{r fcmp-fun-list, file ="./sasx/01_FCMP-fun_list.sas", eval= FALSE, echo=FALSE}
 ```
 
 ```{sas , ref.label = "fcmp-fun-list", echo=FALSE, engine.path = saspath}
-```
-
-* Example template
-
-```{r ex1-sas, file = "./sasex/example-template.sas", eval=FALSE, echo=FALSE}
-```
-
-```{sas , ref.label = "ex1-sas", engine.path = saspath}
 ```
 

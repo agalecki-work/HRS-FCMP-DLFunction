@@ -42,7 +42,7 @@ quit; /* FCMP */
 options cmplib = &cmplib..&member;
 
 
-data dt;
+data _FCMP_info;
  label fcmp_name ="Function/subroutine name";
  label fcmp_grp  ="Function/subroutine group";
  set &cmplib..&member(keep=name value);
@@ -57,23 +57,7 @@ data dt;
  drop scan1 scan2;
 run;
 
-proc sort data=dt;
+proc sort data=_FCMP_info;
 by fcmp_grp;
 run;
-ods listing close;
-
-libname _tmp "&_cmplib_info_path";
-data _tmp.&member;
- set dt;
-run;
-
-%let html_path = &_cmplib_info_path/&member..html;
-ods html file = "&html_path";
-
-Title "List of funs/subs in &member library member";
-proc print data=dt;
-by fcmp_grp;
-run;
-ods html close;
-
 %mend create_fcmp;

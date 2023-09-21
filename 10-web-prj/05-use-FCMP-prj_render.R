@@ -1,7 +1,7 @@
-# source("10-run.R")
+# source("05-use-FCMP-prj_render.R")
 
 rm(list= ls())
-bnm   <- "10-fcmp_source"
+bnm   <- "05-use-FCMP-prj_render"
 nmRmd <- paste0(bnm, ".Rmd")
 nmR   <- paste0(bnm,".Rprog")
 rmarkdown::render(nmRmd, "all")

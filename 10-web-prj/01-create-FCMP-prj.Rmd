@@ -1,0 +1,60 @@
+---
+title: "FCMP info"
+output:
+  rmdformats::readthedown:
+     lightbox: true
+     use_bookdown: true
+
+---
+
+```{r sas-ininit, echo =FALSE}
+ library(rmdformats)
+ Tinit <- "main-why_grp-"
+ # https://www.r-bloggers.com/2019/09/create-rmarkdown-document-with-sas-code-and-output-sas-engine/
+ saspath <- "C:/Program Files/SASHome/SASFoundation/9.4/sas.exe"
+ cdir <- getwd()
+```
+
+Current directory: `r cdir`
+
+# LINKS 
+
+* FCMP source: [FCMP_SOURCE](../01-create-FCMP-prj/fcmp_source/)
+* FCMP info:   [_CMPLIB_INFO](../01-create-FCMP-prj/info-prj01/)
+
+#  FCMP contents 
+
+List of FCMP functions/subroutines
+
+##  Meta data
+
+Variables described below contain information on FCMP functions/subroutines. 
+
+```{r fcmp-contents, file ="./sasx/01_FCMP-contents.sas", eval= FALSE, echo=FALSE}
+```
+
+```{sas , ref.label = "fcmp-contents", echo=FALSE, engine.path = saspath}
+```
+
+##  FCMP groups 
+
+List of FCMP groups is included below.
+
+
+```{r fcmp-grp-list, file ="./sasx/01_FCMP-grp_list.sas", eval= FALSE, echo=FALSE}
+```
+
+```{sas , ref.label = "fcmp-grp-list", echo=FALSE, engine.path = saspath}
+```
+
+## FCMP functions/subroutines
+
+List of FCMP functions/subroutines (organized by FCMP groups) is included below.
+
+
+```{r fcmp-fun-list, file ="./sasx/01_FCMP-fun_list.sas", eval= FALSE, echo=FALSE}
+```
+
+```{sas , ref.label = "fcmp-fun-list", echo=FALSE, engine.path = saspath}
+```
+

@@ -10,7 +10,7 @@ options nocenter;
 
 %let _cmplib_path= &prj_path\_cmplib;
 
-%let _cmplib_info_path = &prj_path\_cmplib_info;
+%let _cmplib_info_path = &prj_path\info-prj01;
 
 %let _fcmp_source_path = &prj_path\fcmp_source;
 
