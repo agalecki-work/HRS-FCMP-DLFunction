@@ -1,6 +1,6 @@
-
-libname clib "&_cmplib_info_path";
 Title "PROC CONTENTS";
+Title2  "01_FCMP-contents.sas"; 
+libname clib "&prj01_path/_cmplib_info";
 ods exclude all;
 proc contents data = clib.dlfunction;
   ods output variables=fcmp_info;

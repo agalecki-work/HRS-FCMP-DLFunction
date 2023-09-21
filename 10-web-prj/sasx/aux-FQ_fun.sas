@@ -1,4 +1,6 @@
 Title "FQ_fun function example";
+libname clib "&prj01_path/_cmplib";
+options cmplib = clib.dlfunction;
 data dtin;
   input varin @@;
 cards;

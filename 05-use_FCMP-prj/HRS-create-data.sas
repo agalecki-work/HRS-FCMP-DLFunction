@@ -18,7 +18,7 @@ libname dtout    "&out_path";      /* Output library */
 /* FCMP library into `_ucmplib` */ 
 libname _ucmplib "&cmplib_path";
 
-filename _tstmac "&prj_path\hrs-macros"; /* folder with macros */
+filename _tstmac "&prj_path\macros-05"; /* folder with macros */
 
 %include _tstmac(summ_project);
 %include _tstmac(_aux_mac);

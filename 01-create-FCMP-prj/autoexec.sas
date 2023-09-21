@@ -1,4 +1,5 @@
-/*--- autoexec.sas in 01-FCMP folder ---*/
+/*--- autoexec.sas in 01-FCMP-prj folder ---*/
+/* Template:  autoexec-01-tmplt.sas */
 
 options nocenter;
 
@@ -14,5 +15,5 @@ options nocenter;
 %let _fcmp_source_path = &prj_path\fcmp_source;
 
 /*--- No changes in the section below -------*/
-filename macros "&prj_path/macros";
+filename macros "&prj_path/macros-01";
 

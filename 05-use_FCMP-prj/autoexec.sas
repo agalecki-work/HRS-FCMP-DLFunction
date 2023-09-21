@@ -6,7 +6,7 @@ options mprint nocenter;
 
 
 /* Path to FCMP library */
-%let cmplib_path = ../01-create-FCMP/_cmplib;    /* Path to CMPLIB folder */
+%let cmplib_path = ../01-create-FCMP-prj/_cmplib;    /* Path to CMPLIB folder */
 
 /*---  Define libref `hrs_core` for  HRS Core data  --- */
 %let hrs_core_path = C:\Users\agalecki\Dropbox (University of Michigan)\DDBC HRS Project\scrambled data;

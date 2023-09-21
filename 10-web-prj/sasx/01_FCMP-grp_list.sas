@@ -1,9 +1,9 @@
-
-libname clib "&_cmplib_info_path";
-
 Title "List of FCMP groups";
+Title2  "01_FCMP-grp_list.sas";
 
-proc sort data = clib.dlfunction
+libname cinfo "&prj01_path/_cmplib_info";
+
+proc sort data = cinfo.dlfunction
            out = vgrps nodupkey;
 by fcmp_grp;
 ;
@@ -11,4 +11,5 @@ by fcmp_grp;
 proc print data = vgrps;
 var fcmp_grp;
 run;
+
 

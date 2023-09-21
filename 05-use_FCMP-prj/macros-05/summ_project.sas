@@ -48,11 +48,12 @@ data _datain_info;
   hrs_datalib = "&hrs_datalib";
   datain = dispatch_datain(year);
   dtref = "";
+  hrs_datalib = "HRS_CORE"; /* Sep. 2023 -Unknown to HRS_CORE */
   datain_exist =.D; /* not checked */
   if hrs_datalib ne "" then do;
     dtref = strip(hrs_datalib)||"."|| strip(datain);
     datain_exist = data_exist(dtref);
-  end; else hrs_datalib ="-Unknown";
+  end; 
   skipit = " ";
   if strip(datain) = "" then skipit = "Y";
   if datain_exist = 0 then skipit = "Y";

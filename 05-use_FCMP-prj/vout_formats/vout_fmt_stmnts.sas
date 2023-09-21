@@ -3,10 +3,9 @@
 
 %macro nagi_grp_fmt;
 format 
-  nagi_walks nagi_jog   nagi_walk1 nagi_sit
-  nagi_chair nagi_clims nagi_clim1 nagi_stoop
-  nagi_arms  nagi_push  nagi_lift  nagi_dime
-     QF.; 
+  nagi_walks nagi_jog   nagi_walk1 nagi_sit   nagi_chair
+  nagi_clims nagi_clim1 nagi_stoop nagi_arms  nagi_push
+  nagi_lift  nagi_dime  QF.; 
 %mend nagi_grp_fmt;
 
 %macro skip_grp_fmt;
