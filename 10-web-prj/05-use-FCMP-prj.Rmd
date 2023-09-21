@@ -1,5 +1,5 @@
 ---
-title: "Use FCMP"
+title: "Use FCMP project"
 output:
   rmdformats::readthedown:
      lightbox: true
@@ -14,42 +14,20 @@ output:
  cdir <- getwd()
 ```
 
+In this document we provide info on project in `05-use_FCMP-prj` folder.
+
 Current directory: `r cdir`
 
 # LINKS
 
-Links to Step files
+Links to Step files that contain info on various steps executed to create output
+dataset.
 
-* [Step1](../05-use-FCMP-prj/info-prj5/)
-* FCMP info:   [_CMPLIB_INFO](../01-create-FCMP-prj/_cmplib_info/)
-* SAS snippets: [SASEX](./sasx/) 
-
-# List of FCMP functions/subroutines
-
-* Variables with the info on FCMp library
-
-```{r fcmp-contents, file ="./sasx/01_FCMP-contents.sas", eval= FALSE, echo=FALSE}
-```
-
-```{sas , ref.label = "fcmp-contents", echo=FALSE, engine.path = saspath}
-```
-
-* List of FCMP functions/subroutines groups
+* [Step 1](../05-use_FCMP-prj/info-prj05/S1-cmplib-info.html):  FCMP library info
+* [Step 2](../05-use_FCMP-prj/info-prj05/S2-FCMP-member-info.html): FCMP functions/subroutines
+* [Step 3](../05-use_FCMP-prj/info-prj05/S3-HRS_years-info.html): Harmonized variable names
+* [Step 4](../05-use_FCMP-prj/info-prj05/S4-vgrps-info.html): Selected vout groups
+* [Step 5](../05-use_FCMP-prj/info-prj05/S5-dataout-info.html): PROC CONTENTS for output dataset
 
 
-```{r fcmp-grp-list, file ="./sasx/01_FCMP-grp_list.sas", eval= FALSE, echo=FALSE}
-```
-
-```{sas , ref.label = "fcmp-grp-list", echo=FALSE, engine.path = saspath}
-```
-
-
-* List of FCMP functions/subroutines (organized by FCMP groups)
-
-
-```{r fcmp-fun-list, file ="./sasx/01_FCMP-fun_list.sas", eval= FALSE, echo=FALSE}
-```
-
-```{sas , ref.label = "fcmp-fun-list", echo=FALSE, engine.path = saspath}
-```
 
