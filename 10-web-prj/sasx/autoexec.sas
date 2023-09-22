@@ -10,6 +10,8 @@ options nocenter mprint;
 
 %let hrs_data_path = C:\Users\agalecki\Dropbox (University of Michigan)\DDBC HRS Project\scrambled data;
 
+libname hrs_core "&hrs_data_path";
+
 /*------ Path to  current project ------- */
 
 %let prj_path = ..; 

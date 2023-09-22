@@ -1,10 +1,14 @@
+options mprint;
 Title '>> Example: year = 1995, vgrps = "subhh$ adldiff"';
+* libref hrs_core defined in autoexec.sas ;
 libname clib "&prj01_path/_cmplib";
 options cmplib = clib.dlfunction;
+filename mac5 "&prj05_path/macros-05"; /* Folder with macros */
+%include mac5(_aux_mac);
 
 /* Aim: Create dataset for one year using variables from selected vgrps */
 
-%macro create_info(year, libin = hrs_core, vgrps =?, out_prefix = work.info);
+%macro create_data_template(hrs_years, libin = hrs_core, vgrps =?);
 /* Macro requires options cmplib = <libref>
    Macro generates 3 datasets with the following default names:
    
@@ -12,19 +16,36 @@ options cmplib = clib.dlfunction;
   _vgrps_info: One row per (selected) variable group. By default all variable groups
      are selected
   _vout
+  
 */
-%let  out_prefix=a.b;
-%let dot =%sysfunc(findc(&out_prefix, "."));
-%put dot =&dot;
-%let out = %scan(&out_prefix, 1, .); 
-%put out = &out;
-data _datain_info;
- year = &year;
+%expand_years(&hrs_years); /* --- Dataset _hrsyears created ---*/ 
+
+data _hrsinfo_libin_all;
+ set  _hrsyears(keep = year);
+ length datain $ 20;
+ label datain_exist = "";
+
  hrs_libin ="&libin";
- datain = dispatch_datain(&year);
+ datain = dispatch_datain(year);
+ dtref = strip(hrs_libin)||"."|| strip(datain);
+ if strip(datain) = "" then dtref  = ""; 
+ datain_exist = data_exist(dtref);
+ skipit = " ";
+ if datain_exist = 0 then skipit = "Y";
+   drop dtref;
+
 run;
 
-data _vgrps_all; /* One row per vra group */
+
+data _hrsinfo_libin;
+  set _hrsinfo_libin_all;
+  if skipit ="Y" then delete;
+  drop skipit;
+run;
+
+
+
+data _vgrps_all; /* One row per var group */
  file print;
  length vgrp $32;
  length ctype $ 1;
@@ -42,7 +63,7 @@ data _vgrps_all; /* One row per vra group */
  drop i list_allvgrps cnt_vgrps;
 run;    
 
-data _vgrps_info (keep = vgrp ctype cnt_vout vout_nms);
+data _hrsinfo_vgrps (keep = vgrp ctype cnt_vout vout_nms);
   set _vgrps_all;
   sel_vgrps =  bind_vgrps("&vgrps"); 
   cnt_vgrps  = countw(sel_vgrps);
@@ -54,51 +75,113 @@ data _vgrps_info (keep = vgrp ctype cnt_vout vout_nms);
   if keep_grp;
 run;
 
-data _vout_info(keep = vgrp vout_nm ctype len ctypelen vout_lbl);
-  set _vgrps_info;
+data _hrsinfo_vout(keep = vgrp vout_nm ctype len ctypelen vout_lbl);
+  set _hrsinfo_vgrps;
   length ctypelen $6;
   do i = 1 to cnt_vout;
    vout_nm = scan(vout_nms, i, " ");
    len = vout_length(vout_nm); /* Variable length */
    ctypelen = strip(ctype) ||strip(len);
+   if strip(ctypelen) ="." then ctypelen = " ";
    vout_lbl = vout_label(vout_nm);
    output;
   end;
 run;
 
+/* Create macro variables */
 proc sql noprint;
- select vgrp     into :vgrp_list  separated by "~"  from _vgrps_info;
- select count(*) into :cnt_vgrps  from _vgrps_info;
- select count(*) into :cnt_vout from _vout_info;
- select vout_nm  into :vout_list  separated by " "  from _vout_info;
-** select year     into :hrsyears_list separated by  " "  from  _datain_skip_info;
-**  select count(*) into :cnt_hrsyears from _datain_skip_info;
- select vout_lbl into :lbl_list   separated by "~"  from _vout_info;
- select ctype    into :ctype_list  separated by "~"  from _vout_info;
+ select year     into :hrsyears_list separated by  " "  from  _hrsinfo_libin;
+ select count(*) into :cnt_hrsyears                     from _hrsinfo_libin;
+ select vgrp     into :vgrp_list     separated by "~"   from _hrsinfo_vgrps;
+ select count(*) into :cnt_vgrps                        from _hrsinfo_vgrps;
+ select vout_nm  into :vout_list     separated by " "   from _hrsinfo_vout;
+ select count(*) into :cnt_vout                         from _hrsinfo_vout;
+ select vout_lbl into :lbl_list      separated by "~"   from _hrsinfo_vout;
+ select ctype    into :ctype_list    separated by "~"   from _hrsinfo_vout;
 quit;
-%put # of var groups         := &cnt_vgrps;
+
+%put List of hrs years       := &hrsyears_list;
+%put # of hrs years          := &cnt_hrsyears;
+ 
 %put List of var groups      := &vgrp_list;
-%put # of harmonized vars    := &cnt_vout;
+%put # of var groups         := &cnt_vgrps;
+
 %put List of harmonized vars := &vout_list;
+%put # of harmonized vars    := &cnt_vout;
+%put -- List of var labels separated with tilda (~) is stored in `lbl_list` macro var;
 %put List of ctype variable  := &ctype_list;
+data _tmp;
+  set  _hrsinfo_vout;
+  if strip(ctypelen) ne '';
+run;
+
+*proc print data=_tmp;
+run;
+
+%let ctypelen_list =;
+proc sql noprint;
+ select count(*)  into :cnt_ctypelen                    from _tmp;
+ select ctypelen  into :ctypelen_list separated by "~"  from _tmp;
+ select vout_nm   into :ctypelen_nms  separated by " "  from _tmp;
+quit;
+
+%put # of vars with non blank length := &cnt_ctypelen; 
+%put List of ctypelen values := &ctypelen_list;
 
 
-%mend process_year;
+/*--  STEP0: initialize `_harmonized_out` data */
+data _harmonized_base; *  (label ="&fcmp_label.. FCMP member `&fcmp_member` compiled on &fcmp_datestamp.");
+ label hhid         = "HOUSEHOLD IDENTIFIER"
+      pn            = "PERSON NUMBER"
+      studyyr       = "STUDY YEAR";
 
-%*process_year(1995); /* All var groups included by default */
-%process_year(2002, vgrps= subhh$ skip);
+ /*-- Label statements ---*/
+ %do i=1 %to &cnt_vout; 
+   %let vnm = %scan(&vout_list, &i);   
+   %let vlbl= %scan(&lbl_list, &i, ~);
+   %*put vnm := &vnm;
+   label &vnm = "&vlbl";
+ %end;    
+ 
+ /*-- Length statements ---*/      
+ length hhid $6 pn $3;
+  %if %eval(&cnt_ctypelen) > 0 %then 
+    %do i= 1 %to &cnt_ctypelen;
+     %let vnm = %scan(&ctypelen_nms, &i);  
+     %let ctp = %scan(&ctypelen_list, &i, ~);
+     length &vnm &ctp;
+    %end;
+ 
+  call missing(of _all_);
+  stop;
+;
+run;
+
+%mend create_data_template;
+
+%*create_data_template(1992-2030);   /* All var groups included by default */
+%create_data_template(2002 2004, vgrps= subhh$ skip);
+
+ods html;
+
+proc print data = _hrsinfo_libin_all;
+run;
+
+
+proc print data = _hrsinfo_libin;
+run;
 
 Title ">>  Selected Var groups info";
 
-proc print data =_datain_info;
+proc print data = _hrsinfo_vgrps;
 run;
 
-
-proc print data =_vgrps_info;
+proc print data = _hrsinfo_vout;
 run;
 
-proc print data = _vout_info;
+proc contents data = _harmonized_base;
 run;
+ods html close;
 
 
 endsas;
