@@ -51,7 +51,7 @@ ods html close;
 
 ods html file = "&prj_path/info-prj05/S4-vgrps-info.html";
 %hrs_binder(cmplib= _ucmplib, member = &fcmp_member,
-            hrs_years = 1992-2020, vgrps = nagi);
+            hrs_years = 1992-2020, vgrps = subhh$ nagi);
 ods html close;
 
 /* STEP 5 dataout: Dataout in `hrs_core` SAS library */
